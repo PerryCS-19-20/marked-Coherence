@@ -158,7 +158,7 @@ In addition, the boilerplate contains two tags that the **coherence** processor 
 
 Here is an example boilerplate file, and the default that the **coherence** processor uses when none is specified.
 
-```
+```html
 <!doctype html>
 <html>
     <head>
