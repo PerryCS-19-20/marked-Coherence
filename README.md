@@ -123,7 +123,7 @@ The **coherence** processor will convert the following punctuation to the approp
 | Input | Entity | Symbol |
 |--------|--------|-------|
 | & | \&amp; | &amp; |
-| " | \&quot; | &quote; |
+| " | \&quot; | &quot; |
 | (TM) | \&trade; | &trade; |
 | (c) | \&copy; | &copy; |
 | (R) | \&reg; | &reg; |
