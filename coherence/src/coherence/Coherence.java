@@ -23,12 +23,15 @@
  */
 package coherence;
 
-import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * The marked-coherence HTML pre-processor Create an HTML page from a lightly
@@ -38,8 +41,6 @@ import java.util.Scanner;
  * @version 0.0.0
  */
 public class Coherence {
-    private static String boilerplate;
-    
     /**
      * @param args the command line arguments The first argument is the input
      * file to be processed The second argument is the HTML file to create The
@@ -47,9 +48,29 @@ public class Coherence {
      * output file
      */
     public static void main(String[] args) {
+        // If the proper args weren't given, print usage text and exit
+        if (args.length < 2) {
+            System.out.println("Usage:");
+            System.out.println("java -jar coherence.jar infile.txt outfile.html [boilerplate.html]");
+            System.exit(1);
+        }
         
+        String boilerplate = "";
+        String intext = "";
+        
+        // Load the input file
+        try {
+            intext = loadFile(args[0]);
+        }
+        catch (IOException e) {
+            System.out.println("Could not load file: " + args[0]);
+            System.exit(1);
+        }
+        
+        // Load the html template file
         if (args.length < 3) {
-            // Load the default boilerplate built into the jar file
+            // If no boilerplate was specified, load the default boilerplate
+            // built into the jar file
             try {
                 boilerplate = loadResourceAsString("boilerplate.html");
             }
@@ -60,9 +81,27 @@ public class Coherence {
         }
         else {
             // Load the specified boilerplate file
+            try {
+                boilerplate = loadFile(args[2]);
+            }
+            catch (IOException e) {
+                System.out.println("Could not load default boilerplate.");
+                System.exit(1);
+            }
         }
         
-        System.out.println(boilerplate);
+        //***************************************************
+        // Convert the input text to html here!!!
+        //***************************************************
+        String htmltext = boilerplate;
+        
+        // Write the html to the output file
+        try (PrintWriter out = new PrintWriter(args[1])){
+            out.print(htmltext);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Could not write to file: " + args[1]);
+            System.exit(1);
+        }
     }
 
     /**
