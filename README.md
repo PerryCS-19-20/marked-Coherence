@@ -40,7 +40,7 @@ punctuation will affect the formatting of the output file:
 
 ####Paragraphs:
 Paragraphs in the _marked_ file are separated by two newline characters.  There must be blank line between paragraphs for them
-to be separated in the output file.
+to be separated in the output file.  Note:  You should not produce a "paragraph" from text that begins with a header, or lists.
 
 ####Headers:
 If a line begins with an asterisk (\*), the line is a header.  Different numbers of asterisks alter the size of the heading, with
@@ -128,8 +128,8 @@ The **coherence** processor will convert the following punctuation to the approp
 | (c) | \&copy; | &copy; |
 | (R) | \&reg; | &reg; |
 | (o) | \&deg; | &deg; |
-| < | \&gt; | &gt; |
-| > | \&lt; | &lt; |
+| > | \&gt; | &gt; |
+| < | \&lt; | &lt; |
 
 ####Escaping Punctuation
 Since the user may want to use any of the punctuation marks used to specify formatting in _marked_ files in the final output, they
