@@ -103,7 +103,7 @@ Images can be specified in a _marked_ file by surrounding the URL of the image w
 ####Links
 The H in HTML stands for Hyper-text, meaning the text links to other text.  _Marked_ files can also specify links.  Links are specified by placing the text of the link in parenthesis, followed by an @ symbol and the URL of the destination.
 
-    (This is an example link@http://example.com}
+    (This is an example link@http://example.com)
     
 Links can also contain images:
 
